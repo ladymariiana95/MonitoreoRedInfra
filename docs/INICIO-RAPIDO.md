@@ -1,3 +1,41 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Usuario" as U
+actor "Administrador" as A
+
+rectangle "Sistema MonitoreoRedInfra" {
+
+  (Autenticarse) as UC1
+  (Visualizar Dashboard) as UC2
+  (Consultar Eventos de Red) as UC3
+  (Recibir Alertas de Seguridad) as UC4
+  
+  (Gestionar Usuarios) as UC5
+  (Configurar Monitoreo) as UC6
+  (Revisar Logs de Auditoría) as UC7
+
+}
+
+U --> UC1
+U --> UC2
+U --> UC3
+U --> UC4
+
+A --> UC5
+A --> UC6
+A --> UC7
+
+UC1 .> (Validar credenciales) : <<include>>
+UC1 .> (Generar token JWT) : <<include>>
+
+UC3 .> (Filtrar eventos) : <<include>>
+UC4 .> (Notificación automática) : <<include>>
+
+@enduml
+
+
 # Guía de inicio rápido — NetWatch
 
 Esta guía te lleva desde cero hasta tener NetWatch funcionando en tu computador, paso a paso, sin conocimientos técnicos previos.
